@@ -1,4 +1,4 @@
-import { defineStorage } from "@aws-amplify/backend";
+import { defineFunction, defineStorage } from "@aws-amplify/backend";
 
 /*== STEP 1 ===============================================================
 The section below creates a Todo database table with a "content" field. Try
@@ -6,7 +6,28 @@ adding a new "isDone" field as a boolean. The authorization rule below
 specifies that any user authenticated via an API key can "create", "read",
 "update", and "delete" any "Todo" records.
 =========================================================================*/
-export const storage = defineStorage({ name: "amplifyTeamDrive" });
+export const storage = defineStorage({
+  name: "amplifyTeamDrive",
+
+  // triggers: {
+  //   onUpload: defineFunction({
+  //     entry: "./on-upload-handler.ts",
+  //   }),
+  //   onDelete: defineFunction({
+  //     entry: "./on-delete-handler.ts",
+  //   }),
+  // },
+  access: (allow) => ({
+    "profile-pictures/{entity_id}/*": [
+      allow.guest.to(["read"]),
+      allow.entity("identity").to(["read", "write", "delete"]),
+    ],
+    "picture-submissions/*": [
+      allow.guest.to(["read", "write"]),
+      allow.authenticated.to(["read", "write"]),
+    ],
+  }),
+});
 
 /*== STEP 2 ===============================================================
 Go to your frontend source code. From your client-side code, generate a

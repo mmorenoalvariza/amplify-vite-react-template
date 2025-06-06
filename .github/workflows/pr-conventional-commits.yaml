@@ -25,6 +25,5 @@ jobs:
             chore
             build
             refactor
-          scopes: |
-            PLKPE-\d+
+          scopes: PLKPE-\d+
           requireScope: true

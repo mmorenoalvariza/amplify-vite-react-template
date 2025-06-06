@@ -1,13 +1,13 @@
 {
   "LABEL": {
-    "name": "title needs formatting",
+    "name": "Title prefix missing",
     "color": "EEEEEE"
   },
   "CHECKS": {
-    "prefixes": ["style(", "fix(", "feat(", "refactor(", "build("],
-    "regexp": "docs\\(v[0-9]\\): ",
+    "prefixes": ["build("],
+    "regexp": "fix([sS]*)",
     "regexpFlags": "i",
-    "ignoreLabels": ["dont-check-PRs-with-this-label", "meta"]
+    "ignoreLabels": ["skip-title-check"]
   },
   "MESSAGES": {
     "success": "All OK",

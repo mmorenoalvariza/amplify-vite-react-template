@@ -10,7 +10,7 @@ specifies that any user authenticated via an API key can "create", "read",
 const schema = a.schema({
   sayHello: a.query().arguments({
     name: a.string(),
-  }).returns(a.string()).authorization((allow) => [allow.guest()]).handler(a.handler.function(sayHello)),
+  }).returns(a.string()).authorization((allow) => [allow.authenticated()]).handler(a.handler.function(sayHello)),
   Todo: a
     .model({
       content: a.string(),

@@ -27,3 +27,4 @@ jobs:
             refactor
           scopes: |
             PLKPE-\d+
+          requireScope: true

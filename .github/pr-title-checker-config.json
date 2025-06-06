@@ -5,7 +5,7 @@
   },
   "CHECKS": {
     "prefixes": ["build("],
-    "regexp": "fix([sS]*)",
+    "regexp": "fix(([sS]*))",
     "regexpFlags": "i",
     "ignoreLabels": ["skip-title-check"]
   },
